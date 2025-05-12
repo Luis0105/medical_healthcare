@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical_healthcare/screens/login_screen.dart';
+import 'package:medical_healthcare/widgets/navbar_roots.dart';
+import 'package:medical_healthcare/screens/signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -17,7 +19,10 @@ class WelcomeScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context)));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NavbarRoots(),
+                      ));
                 },
                 child: Text(
                   "SKIP",
@@ -89,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
+                            builder: (context) => SignUpScreen(),
                           ));
                     },
                     child: Padding(
