@@ -6,9 +6,11 @@ class UpcomingSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: EdgeInsets.symmetric(
+          horizontal: 15), // Espaciado horizontal para todo el contenido
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Alineación a la izquierda de los hijos
         children: [
           Text(
             "About Doctor",
@@ -17,7 +19,7 @@ class UpcomingSchedule extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 15),
+          SizedBox(height: 15), // Espacio vertical entre el título y la tarjeta
           Container(
             padding: EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
@@ -32,9 +34,12 @@ class UpcomingSchedule extends StatelessWidget {
               ],
             ),
             child: SizedBox(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context)
+                  .size
+                  .width, // Ocupa todo el ancho de la pantalla
               child: Column(
                 children: [
+                  // Información principal del docto
                   ListTile(
                     title: Text(
                       "Dr. Doctor Name",
@@ -51,10 +56,11 @@ class UpcomingSchedule extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Divider(
-                      thickness: 1,
+                      thickness: 1, // Grosor de la línea
                       height: 20,
                     ),
                   ),
+                  // Información de fecha, hora y estado
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -109,6 +115,7 @@ class UpcomingSchedule extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 15),
+                  // Botones de acción: Cancelar y Reagendar
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -133,6 +140,7 @@ class UpcomingSchedule extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Botón Reagendar
                       InkWell(
                         onTap: () {},
                         child: Container(
