@@ -68,14 +68,14 @@ class SettingsScreen extends StatelessWidget {
               leading: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple.shade100,
+                  color: Colors.orange.shade100,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.notifications_none_outlined,
-                    color: Colors.deepPurple, size: 35),
+                child: Icon(Icons.info_outline_rounded,
+                    color: Colors.orange, size: 35),
               ),
               title: Text(
-                "Notifications",
+                "About Us",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               ),
               trailing: Icon(Icons.arrow_forward_ios_rounded),
@@ -126,19 +126,20 @@ class SettingsScreen extends StatelessWidget {
             SizedBox(height: 20),
 
             // Opción: Acerca de
+
             ListTile(
               onTap: () {},
               leading: Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.orange.shade100,
+                  color: Colors.deepPurple.shade100,
                   shape: BoxShape.circle,
                 ),
-                child: Icon(Icons.info_outline_rounded,
-                    color: Colors.orange, size: 35),
+                child: Icon(Icons.notifications_none_outlined,
+                    color: Colors.deepPurple, size: 35),
               ),
               title: Text(
-                "About Us",
+                "Notifications",
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
               ),
               trailing: Icon(Icons.arrow_forward_ios_rounded),

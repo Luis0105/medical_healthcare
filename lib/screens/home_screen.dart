@@ -1,18 +1,17 @@
-// Pantalla principal de bienvenida que muestra opciones de visita, síntomas y lista de doctores
 import 'package:flutter/material.dart';
 import 'package:medical_healthcare/screens/appointment_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  // Lista de síntomas representados como etiquetas
+  // Lista de síntomas que se mostrarán de forma horizontal
   List symptoms = [
     "Temperature",
     "Snuffle",
     "Fever",
-    "Cough",
+    "Couhg",
     "Cold",
   ];
 
-  // Lista de imágenes de doctores
+  // Lista de imágenes asociadas a cada doctor
   List imgs = [
     "doctor1.jpg",
     "doctor2.jpg",
@@ -20,54 +19,71 @@ class HomeScreen extends StatelessWidget {
     "doctor4.jpg",
   ];
 
+  // Lista de nombres personalizados para cada doctor
+  List<String> doctorNames = [
+    "Dra. María Gómez",
+    "Dra. Ana López",
+    "Dr. Carlos Rivera",
+    "Dra. Juan Pérez",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.only(top: 40), // Margen superior
+      // Hace scroll en pantalla completa si el contenido excede el alto
+      padding:
+          EdgeInsets.only(top: 40), // Espaciado superior para no pegar al borde
       child: Column(
-        crossAxisAlignment:
-            CrossAxisAlignment.start, // Alineación del contenido a la izquierda
+        // Organiza verticalmente todo el contenido
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Encabezado con saludo y foto
+          // Encabezado con saludo e imagen del usuario
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // Organiza horizontalmente saludo y avatar
+              mainAxisAlignment: MainAxisAlignment
+                  .spaceBetween, // Saludo a la izquierda, avatar a la derecha
               children: [
                 Text(
                   "Hello Luis",
                   style: TextStyle(
-                    fontSize: 35, // Tamaño grande para saludo
-                    fontWeight: FontWeight.w500, // Semi negrita
+                    fontSize: 35, // Tamaño grande para el saludo
+                    fontWeight: FontWeight.w500, // Peso seminegrita
                   ),
                 ),
                 CircleAvatar(
-                  radius: 25, // Tamaño del avatar
+                  // Muestra una imagen redonda
+                  radius: 25,
                   backgroundImage: AssetImage("images/doctor1.jpg"),
                 ),
               ],
             ),
           ),
 
-          SizedBox(height: 30),
+          SizedBox(
+              height: 30), // Espacio entre el encabezado y la siguiente sección
 
-          // Opciones: visita a clínica o visita a domicilio
+          // Fila de botones: visita en clínica y a domicilio
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // Opción 1: Visita en clínica
+              // Botón para visita en clínica
               InkWell(
-                onTap: () {},
+                // Detecta toques y genera efecto visual
+                onTap: () {}, // Aquí podrías colocar una acción
                 child: Container(
+                  // Caja que contiene ícono y texto
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Color(0xFF7165D6),
+                    // Decoración con color, esquinas y sombra
+                    color: Color(0xFF7165D6), // Fondo morado
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black12, // Sombra gris clara
-                        blurRadius: 6, // Difuminado de la sombra
-                        spreadRadius: 4, // Qué tanto se expande
+                        color: Colors.black12,
+                        blurRadius: 6,
+                        spreadRadius: 4,
                       ),
                     ],
                   ),
@@ -75,6 +91,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
+                        // Círculo blanco con ícono "+"
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -95,6 +112,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         "Make an appointment",
                         style: TextStyle(
@@ -106,13 +124,13 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-              // Opción 2: Visita a domicilio
+              // Botón para visita a domicilio
               InkWell(
                 onTap: () {},
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.white, // Fondo blanco
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
@@ -126,6 +144,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
+                        // Círculo con ícono de casa
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           color: Color(0xFFF0EEFA),
@@ -145,6 +164,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
+                      SizedBox(height: 5),
                       Text(
                         "Call the doctor home",
                         style: TextStyle(
@@ -158,9 +178,9 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
 
-          SizedBox(height: 25),
+          SizedBox(height: 25), // Espacio antes de la sección de síntomas
 
-          // Sección: Síntomas comunes
+          // Título de la sección de síntomas
           Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text(
@@ -177,11 +197,11 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 70,
             child: ListView.builder(
-              shrinkWrap:
-                  true, // Hace que el ListView solo use el espacio necesario
-              scrollDirection: Axis.horizontal,
-              itemCount:
-                  symptoms.length, // Número de elementos que se van a mostrar
+              // Lista dinámica horizontal
+              shrinkWrap: true,
+              scrollDirection:
+                  Axis.horizontal, // Hace scroll de izquierda a derecha
+              itemCount: symptoms.length, // Número de elementos
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -199,7 +219,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      symptoms[index],
+                      symptoms[index], // Síntoma mostrado
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -212,13 +232,13 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 15),
+          SizedBox(height: 15), // Espacio antes de doctores
 
-          // Sección: Doctores populares
+          // Título de sección de doctores
           Padding(
             padding: EdgeInsets.only(left: 15),
             child: Text(
-              "Popular Doctors",
+              "Popular Doctros",
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.w500,
@@ -227,18 +247,19 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          // Cuadrícula de doctores populares
+          // Rejilla de doctores populares
           GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, // Dos columnas
+              crossAxisCount: 2, // 2 columnas
             ),
-            itemCount: 4, // Número de doctores
-            shrinkWrap: true, // Permite que la GridView se ajuste al contenido
+            itemCount: 4, // Total de doctores
+            shrinkWrap: true,
             physics:
-                NeverScrollableScrollPhysics(), // Desactiva scroll propio para no interferir
+                NeverScrollableScrollPhysics(), // Para que no interfiera con el scroll principal
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
+                  // Navega a la pantalla de cita
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -268,7 +289,7 @@ class HomeScreen extends StatelessWidget {
                         backgroundImage: AssetImage("images/${imgs[index]}"),
                       ),
                       Text(
-                        "Dr. Doctor Name",
+                        doctorNames[index], // Nombre del doctor desde la lista
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
@@ -290,7 +311,7 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.amber,
                           ),
                           Text(
-                            "4.9",
+                            "4.9", // Calificación
                             style: TextStyle(
                               color: Colors.black45,
                             ),
